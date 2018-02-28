@@ -941,15 +941,15 @@
         if (typeof maxHeight == 'undefined') {
             maxHeight = this._styles._max;
         }
+        if (this._styles._max !== 0 && maxHeight <= this._styles._max) {
+            return ;
+        }
         this._initStyles();
         this._updateContainerHeight();
         if (!this.opts.cellHeight) { // The rest will be handled by CSS
             return ;
         }
-        if (this._styles._max !== 0 && maxHeight <= this._styles._max) {
-            return ;
-        }
-
+        
         if (!this.opts.verticalMargin || this.opts.cellHeightUnit === this.opts.verticalMarginUnit) {
             getHeight = function(nbRows, nbMargins) {
                 return (self.opts.cellHeight * nbRows + self.opts.verticalMargin * nbMargins) +
